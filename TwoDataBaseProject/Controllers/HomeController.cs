@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using TwoDataBaseProject.Models;
 
 namespace TwoDataBaseProject.Controllers
 {
@@ -10,6 +7,17 @@ namespace TwoDataBaseProject.Controllers
     {
         public ActionResult Index()
         {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Index(Person aPerson)
+        {
+            MyDbContext aContext = new MyDbContext();
+            aContext.Persons.Add(aPerson);
+            aContext.SaveChanges();
+
+
+
             return View();
         }
 
